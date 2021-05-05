@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import type {Node} from 'react';
+import type { Node } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -16,6 +16,7 @@ import {
   Text,
   useColorScheme,
   View,
+  NativeModules,
 } from 'react-native';
 
 import {
@@ -51,6 +52,7 @@ const Section = ({children, title}): Node => {
     </View>
   );
 };
+//const { BGXModule } = NativeModules;
 
 const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -58,6 +60,18 @@ const App: () => Node = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  const { BGXModule } = NativeModules;
+
+  let hej = "yo";
+
+  BGXModule.getNameReact((lol) => console.log("LOL", lol))
+
+  console.log("BGXModule: ", BGXModule)
+  console.log("NativeModules: ", NativeModules)
+  console.log("Namnet: ", BGXModule.getNameReact((yo) => hej = yo))
+  console.log("Namnet2: ", NativeModules.BGXModule.getNameReact)
+  console.log("hej? ", hej);
 
   return (
     <SafeAreaView style={backgroundStyle}>

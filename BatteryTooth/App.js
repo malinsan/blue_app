@@ -9,6 +9,7 @@
 import React from 'react';
 import type { Node } from 'react';
 import {
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -66,12 +67,17 @@ const App: () => Node = () => {
   let hej = "yo";
 
   BGXModule.getNameReact((lol) => console.log("LOL", lol))
+  
+  BGXModule.getNameReact((lol) => console.log("LOL", lol))
+  console.log("hejhej!");
 
-  console.log("BGXModule: ", BGXModule)
+  /* console.log("BGXModule: ", BGXModule)
   console.log("NativeModules: ", NativeModules)
   console.log("Namnet: ", BGXModule.getNameReact((yo) => hej = yo))
   console.log("Namnet2: ", NativeModules.BGXModule.getNameReact)
-  console.log("hej? ", hej);
+  console.log("hej? ", hej); */
+
+  //BGXModule.scanForDevices();
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -84,6 +90,16 @@ const App: () => Node = () => {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
+          <Button
+            onPress={() => {
+              console.log("Scanning for devices...")
+              BGXModule.scanForDevices()
+            }}
+            title="Scan for Devices"
+            color="#841584"
+            accessibilityLabel="Scan for BGX Devices"
+          />
+
           <Section title="Step One">
             Edit <Text style={styles.highlight}>App.js</Text> to change this
             screen and then come back to see your edits. Trolololo

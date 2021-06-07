@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-package com.batterytooth;
+package com.batterytooth.bgx;
 
 /**
  * The BGX_CONNECTION_STATUS datatype describes the connection

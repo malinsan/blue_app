@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-package com.batterytooth;
+package com.batterytooth.bgx;
 
 /**
  * BusMode determines how the BGX interprets data it receives.

@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-package com.batterytooth;
+package com.batterytooth.bgx;
 
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCallback;
@@ -78,7 +78,7 @@ import static android.bluetooth.BluetoothGattCharacteristic.PROPERTY_NOTIFY;
 import static android.bluetooth.BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT;
 import static android.bluetooth.BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE;
 
-import static com.batterytooth.BGX_CONNECTION_STATUS.INTERROGATING;
+import static com.batterytooth.bgx.BGX_CONNECTION_STATUS.INTERROGATING;
 import static java.lang.Math.toIntExact;
 
 
@@ -2396,9 +2396,13 @@ public class BGXpressService extends JobIntentService {
      * @param context Interface to global information about an Android application environment.
      */
     public static void startActionStartScan(Context context) {
+        Log.d("ReactNative","1");
         Intent intent = new Intent(context, BGXpressService.class);
+        Log.d("ReactNative","2");
         intent.setAction(ACTION_START_SCAN);
+        Log.d("ReactNative","3");
         enqueueWork(context, intent);
+        Log.d("ReactNative","4");
     }
 
     /**

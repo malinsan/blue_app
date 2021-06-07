@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-package com.batterytooth;
+package com.batterytooth.bgx;
 
 /**
  * This is the OTA status that can be used to

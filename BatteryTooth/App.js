@@ -28,6 +28,10 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import { Tabs } from "@ant-design/react-native";
+import { ConnectView } from './views/ConnectView';
+import { StatusView } from './views/StatusView';
+
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
@@ -55,29 +59,55 @@ const Section = ({children, title}): Node => {
 };
 //const { BGXModule } = NativeModules;
 
-const App: () => Node = () => {
+const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  const { BGXModule } = NativeModules;
+  const tabs = [
+    { title: "Status" },
+    { title: "Connect" }
+  ]
 
-  let hej = "yo";
+  const style1 = {
+    alignItems: "center",
+    justifyContent: "center",
+    height: 150
+  }
+
+  const style2 = {
+    height: 150
+  }
+
+  return (
+    <View
+      style={{
+        backgroundColor: isDarkMode ? Colors.black : Colors.white,
+        flex: 1
+      }}
+    >
+      <Tabs tabs={tabs}>
+        <StatusView />
+        <ConnectView />
+      </Tabs>
+    </View>
+  )
+}
+
+const App2: () => Node = () => {
+  const { BGXModule } = NativeModules;
+  const isDarkMode = useColorScheme() === 'dark';
+
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
+
 
   BGXModule.getNameReact((lol) => console.log("LOL", lol))
   
   BGXModule.getNameReact((lol) => console.log("LOL", lol))
-  console.log("hejhej!");
-
-  /* console.log("BGXModule: ", BGXModule)
-  console.log("NativeModules: ", NativeModules)
-  console.log("Namnet: ", BGXModule.getNameReact((yo) => hej = yo))
-  console.log("Namnet2: ", NativeModules.BGXModule.getNameReact)
-  console.log("hej? ", hej); */
-
-  //BGXModule.scanForDevices();
 
   return (
     <SafeAreaView style={backgroundStyle}>
